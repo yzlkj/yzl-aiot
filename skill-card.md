@@ -39,10 +39,10 @@ Mitigation: Use `/open/device/all` with `latestModificationTime` for incremental
 **Output Type(s):** [Text, Shell commands, Guidance] <br>
 **Output Format:** [Plain text and Markdown with inline shell commands] <br>
 **Output Parameters:** [1D] <br>
-**Other Properties Related to Output:** [Requires python3 and YZLIOT_API_KEY; outputs may reflect live device state and command results.] <br>
+**Other Properties Related to Output:** [Requires Python 3 (run with `python`, or `python3` where only that exists) and YZLIOT_API_KEY; outputs may reflect live device state and command results.] <br>
 
 ## Skill Version(s): <br>
-1.2.0 (source: server release metadata and artifact _meta.json) <br>
+1.2.1 (source: server release metadata and artifact _meta.json) <br>
 
 ## Ethical Considerations: <br>
 Users should evaluate whether this skill is appropriate for their environment, review any generated or modified files before relying on them, and apply their organization's safety, security, and compliance requirements before deployment. <br>

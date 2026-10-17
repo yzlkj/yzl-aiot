@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""YZL-AIoT 云智联 AIoT 设备管理交互技能 v1.2.0
+"""YZL-AIoT 云智联 AIoT 设备管理交互技能 v1.2.1
 
 基于云智联开放接口（Open API v2，官方文档更新 2026-07-25）:
   Base: https://open.yzlkj.com
@@ -48,7 +48,7 @@ MAX_CONSECUTIVE_ERRORS = 5
 # ============================================================
 # 版本 & 技能信息
 # ============================================================
-LOCAL_VERSION = "1.2.0"
+LOCAL_VERSION = "1.2.1"
 SKILL_SLUG = "yzl-aiot"
 CLAWHUB_REGISTRY = "https://clawhub.ai"
 VERSION_CACHE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".version_cache.json")
@@ -790,7 +790,8 @@ def print_help():
     print(f"""YZL-AIoT 云智联设备管理 v{LOCAL_VERSION}
 
 用法:
-  python3 tool.py <命令> [参数]
+  python tool.py <命令> [参数]
+  （若环境只有 python3，把 python 换成 python3，如 python3 tool.py help）
 
 命令:
   ping                              测试连接
@@ -806,11 +807,11 @@ def print_help():
   help                              显示本帮助
 
 示例:
-  python3 tool.py all
-  python3 tool.py list 0 50 水阀
-  python3 tool.py device WANCD1-0000000001
-  python3 tool.py history <设施ID> 3
-  python3 tool.py send WANCD1-0000000001 SetFac '["WANCD1-0000000001","kk1","1"]'
+  python tool.py all
+  python tool.py list 0 50 水阀
+  python tool.py device WANCD1-0000000001
+  python tool.py history <设施ID> 3
+  python tool.py send WANCD1-0000000001 SetFac '["WANCD1-0000000001","kk1","1"]'
 
 ⚠️ 频率限制（并发 ≤2，务必低于限速，否则有封 IP 风险）:
   /open/device/all      10次/10秒      /open/device/list      5次/10秒

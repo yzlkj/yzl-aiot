@@ -3,7 +3,7 @@
 > 云智联科技（yzlkj）旗下 AIoT 开源组织核心项目。
 > 专为通用智能体（AI Agent）设计的物联网设备管理技能：设备数据采集、历史数据查询、远程控制。
 
-**当前版本：v1.2.0**（对齐云智联开放接口 2026-07-25 文档）
+**当前版本：v1.2.1**（对齐云智联开放接口 2026-07-25 文档；v1.2.1 为命令写法修正）
 
 ## ⚠️ 重要：频率限制与封 IP 风险
 
@@ -42,14 +42,14 @@
    export YZLIOT_API_KEY="你的APIKEY"
    ```
 
-2. 常用命令：
+2. 常用命令（统一用 `python`；仅有 `python3` 的环境请把 `python` 换成 `python3`）：
 
    ```bash
-   python3 tool.py all                  # 所有设备（简易信息）
-   python3 tool.py device <设备ID>       # 设备详情
-   python3 tool.py history <设施ID> 3    # 历史数据
-   python3 tool.py send WANCD1-0000000001 SetFac '["WANCD1-0000000001","kk1","1"]'
-   python3 tool.py help                 # 完整帮助
+   python tool.py all                  # 所有设备（简易信息）
+   python tool.py device <设备ID>       # 设备详情
+   python tool.py history <设施ID> 3    # 历史数据
+   python tool.py send WANCD1-0000000001 SetFac '["WANCD1-0000000001","kk1","1"]'
+   python tool.py help                 # 完整帮助
    ```
 
 ## 访问秘钥

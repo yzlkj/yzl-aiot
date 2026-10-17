@@ -2,12 +2,13 @@
 name: yzl-aiot
 description: "YZL-AIoT 云智联 AIoT 设备管理技能。Open API v2（文档更新 2026-07-25），路径以 /open/ 开头。一句话即可获取传感器数据、发送控制指令。⚠️ 请求频率必须低于平台限速，否则有封 IP 风险。激活语：云智联设备，钥匙是xxxxxx，帮我打开开关/获取数据"
 homepage: https://github.com/yzlkj/yzl-aiot
-metadata: { "openclaw": { "requires": { "bins": ["python3"], "env": ["YZLIOT_API_KEY"] } } }
+metadata: { "openclaw": { "requires": { "bins": ["python"], "env": ["YZLIOT_API_KEY"] } } }
 ---
 
 ## ⚙️ 运行时要求
 
 - **Python 3.6+**（仅使用 json, os, sys, http.client, time, collections 等标准库）
+- **命令统一用 `python`**：本文档示例均为 `python tool.py ...`；若所在环境只有 `python3`（部分 Linux/macOS 较常见），把 `python` 换成 `python3` 即可，如 `python3 tool.py help`。
 - **环境变量 `YZLIOT_API_KEY`** - 必需，请从「云智联YZL」微信小程序获取
 
 ## 🚨 请求频率限制与封 IP 风险（必读）
@@ -110,32 +111,34 @@ metadata: { "openclaw": { "requires": { "bins": ["python3"], "env": ["YZLIOT_API
 
 如果需要更精细控制：
 
+> 下列命令统一用 `python`；若环境只有 `python3`，把 `python` 换成 `python3` 即可（如 `python3 tool.py help`）。
+
 ```bash
 # 获取所有设备（简易信息，不含设施集；可带轮询标记）
-python3 tool.py all
-python3 tool.py all --tag mytag
+python tool.py all
+python tool.py all --tag mytag
 
 # 分页获取设备列表（含设施集，单页上限 200）
-python3 tool.py list [跳过数量] [单页数量] [筛选词]
+python tool.py list [跳过数量] [单页数量] [筛选词]
 
 # 查看设备详情（路径参数）
-python3 tool.py device WANCD1-0000000001
+python tool.py device WANCD1-0000000001
 
 # 获取历史数据（设施ID，非设备ID；天数默认 5）
-python3 tool.py history <设施ID> [天数]
+python tool.py history <设施ID> [天数]
 
 # 获取设备全部设施的历史数据
-python3 tool.py device-history <设备ID> [天数]
+python tool.py device-history <设备ID> [天数]
 
 # 开启电磁阀（args 上限 5 个，waitTimeout 5~20 秒）
-python3 tool.py send WANCD1-0000000001 SetFac '["WANCD1-0000000001","kk1","1"]'
+python tool.py send WANCD1-0000000001 SetFac '["WANCD1-0000000001","kk1","1"]'
 
 # 关闭电磁阀
-python3 tool.py send WANCD1-0000000001 SetFac '["WANCD1-0000000001","kk1","0"]'
+python tool.py send WANCD1-0000000001 SetFac '["WANCD1-0000000001","kk1","0"]'
 
 # 指令记录
-python3 tool.py cmd-list <设备ID>
-python3 tool.py cmd-detail <指令ID>
+python tool.py cmd-list <设备ID>
+python tool.py cmd-detail <指令ID>
 ```
 
 ## 🔄 自动版本更新检测 (v1.1.0+)
@@ -152,7 +155,7 @@ python3 tool.py cmd-detail <指令ID>
 ### 手动检查更新
 
 ```bash
-python3 tool.py check-update
+python tool.py check-update
 ```
 
 ### 更新方法
@@ -162,7 +165,7 @@ python3 tool.py check-update
 clawhub update yzl-aiot
 
 # 或指定版本
-clawhub update yzl-aiot --version 1.2.0
+clawhub update yzl-aiot --version 1.2.1
 ```
 
 ## 📡 API 接口参考（v2，文档更新 2026-07-25）
@@ -308,6 +311,12 @@ clawhub update yzl-aiot --version 1.2.0
 - 官网：www.yzlkj.com
 
 ## 版本历史
+
+### v1.2.1 (2026-10-18) — 命令示例统一为 python
+- 🐍 **命令写法统一**：所有示例由 `python3 tool.py ...` 改为 `python tool.py ...`；并注明只有 `python3` 的环境（部分 Linux/macOS）把 `python` 换成 `python3` 即可
+- 📦 **依赖声明同步**：`metadata.openclaw.requires.bins` 由 `["python3"]` 改为 `["python"]`
+- 📝 **帮助文本同步**：`tool.py help` 的用法与示例、README、skill-card 同步改为 `python`
+- ℹ️ 无接口、参数或行为变更，纯文档与提示文本修正（功能与 v1.2.0 完全一致）
 
 ### v1.2.0 (2026-10-17) — 对齐 2026-07-25 官方文档
 - 🚨 **新增《请求频率限制与封 IP 风险》必读章节**：明确要求请求频率低于限速、并发 ≤2；同 IP 频繁返回非 0 状态码会被**永久封禁**；给出指数退避与监控要求
